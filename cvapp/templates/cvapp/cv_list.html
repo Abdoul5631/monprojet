@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Liste des CV{% endblock %}
+
+{% block content %}
+    <h1>Liste des CV</h1>
+    <a href="{% url 'submit_cv' %}">Créer un nouveau CV</a>
+    <ul>
+       
+        {% for cv in cvs %}
+            <li>
+                <strong>Description :</strong> {{ cv.description }} <br>
+                <strong>Date de création :</strong> {{ cv.date_created }} <br>
+                <a href="{% url 'cv_detail' cv.id %}">Voir</a>
+                <a href="{% url 'cv_update' cv.id %}">Modifier</a>
+                <a href="{% url 'cv_delete' cv.id %}">Supprimer</a>
+                <a href="{% url 'download_cv' cv.id %}">Télécharger</a>
+            </li>
+            {% empty %}
+               <p>Aucun CV disponible.</p>
+        {% endfor %}
+    </ul>
+    <footer>
+        © - Plateforme de CV
+    </footer>
+{% endblock %}
+
+<div>
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; première</a>
+            <a href="?page={{ page_obj.previous_page_number }}">précédent</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">suivant</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">dernière &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<form method="GET">
+    <input type="text" name="q" value="{{ query }}" placeholder="Rechercher par nom">
+    <button type="submit">Rechercher</button>
+</form>
+
+

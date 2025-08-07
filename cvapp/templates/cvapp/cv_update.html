@@ -1,0 +1,15 @@
+{% extends 'cvapp/base.html' %}
+
+{% block title %}Modifier un CV{% endblock %}
+
+{% block content %}
+<h2>Modifier un CV</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer les modifications</button>
+</form>
+
+<a href="{% url 'cv_list' %}">Retour à la liste</a>
+{% endblock %}

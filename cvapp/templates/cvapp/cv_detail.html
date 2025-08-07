@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du CV</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block title %}Détails du CV{% endblock %}
+
+    {% block content %}
+        <h1>Détails du CV</h1>
+        <p><strong>Nom :</strong> {{ cv.full_name }}</p>
+        <p><strong>Profession :</strong> {{ cv.profession }}</p>
+        <p><strong>Email :</strong> {{ cv.email }}</p>
+        <p><strong>Téléphone :</strong> {{ cv.phone }}</p>
+        <p><strong>Adresse :</strong> {{ cv.address }}</p>
+        <p><strong>Résumé :</strong> {{ cv.summary }}</p>
+        <p><strong>Catégorie :</strong> {{ cv.category }}</p>
+        <p><strong>Compétences :</strong> {{ cv.skills }}</p>
+
+        <a href="{% url 'cv_edit' cv.pk %}">Modifier</a>
+        <a href="{% url 'cv_list' %}">Retour à la liste</a>
+    {% endblock %}
+</body>
+</html>

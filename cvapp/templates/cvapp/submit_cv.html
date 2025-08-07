@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soumettre un CV</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block title %}Soumettre un CV{% endblock %}
+
+    {% block content %}
+        <h1>Soumettre un CV</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Soumettre</button>
+        </form>
+        <a href="/">Retour à l'accueil</a>
+    {% endblock %}
+</body>
+</html>

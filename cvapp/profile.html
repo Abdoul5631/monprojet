@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+<!-- cvapp/templates/profile.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil de {{ user.username }}</title>
+</head>
+<body>
+    <h1>Bienvenue sur votre profil, {{ user.username }}!</h1>
+    <p>Email : {{ user.email }}</p>
+    <p>Nom complet : {{ user.first_name }} {{ user.last_name }}</p>
+
+    <a href="{% url 'logout' %}">Se déconnecter</a>
+    {% endfor %}
+</body>
+</html>
