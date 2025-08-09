@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from cvapp import views  # Importez les vues de votre application
+from .import views  # Importez les vues de votre application
 
 urlpatterns = [
     path('admin/', admin.site.urls),
