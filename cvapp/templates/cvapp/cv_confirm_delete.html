@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Confirmer la suppression{% endblock %}
+
+{% block content %}
+    <h1>Confirmer la suppression</h1>
+    <p>Êtes-vous sûr de vouloir supprimer le CV de <strong>{{ cv.full_name }}</strong> ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Oui, supprimer</button>
+    </form>
+    <a href="{% url 'cv_list' %}">Annuler</a>
+{% endblock %}
